@@ -4,12 +4,12 @@ import {  NavLink } from 'react-router-dom';
 
 class Nav extends Component {
 
-   constructor() {
-      super()
-      this.state={
-         onClick:''
-      }
-   }
+   // constructor() {
+   //    super()
+   //    this.state={
+   //       onClick:''
+   //    }
+   // }
 
    
 
@@ -18,9 +18,9 @@ render () {
  
       <nav className='main-nav'>
         <ul>
-        <li><NavLink exact to="/outerspace" onClick={this.handleClick}>outerspace </NavLink></li>
-          <li><NavLink to="/ocean" onClick={this.onClick}>ocean</NavLink></li>
-          <li><NavLink to='/jungle' onClick={this.handleClick}>jungle</NavLink></li>
+        <li><NavLink  to="/dog" >dog</NavLink></li>
+          <li><NavLink to="/rabbit" >rabbit</NavLink></li>
+          <li><NavLink to='/koala' >koala</NavLink></li>
        </ul>
        </nav>
 

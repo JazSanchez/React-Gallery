@@ -12,40 +12,40 @@ export default class App extends Component {
     super();
     this.state = {
       photos: [],
-      outerspace: [],
-      ocean: [],
-      jungle: [],
+      dog: [],
+      rabbit: [],
+      koala: [],
     };
   }
 
   componentDidMount() {
     this.performSearch();
-    this.performSearch("outerspace");
-    this.performSearch("ocean");
-    this.performSearch("jungle");
+    this.performSearch("dog");
+    this.performSearch("rabbit");
+    this.performSearch("koala");
   }
 
-  performSearch = (query = "outerspace") => {
+  performSearch = (query = "cat") => {
     axios
       .get(
         `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
       )
       .then((response) => {
-        if (query === "outerspace") {
+        if (query === "dog") {
           this.setState({
-            outerspace: response.data.photos.photo,
+            dog: response.data.photos.photo,
           });
-        } else if (query === "ocean") {
+        } else if (query === "rabbit") {
           this.setState({
-            ocean: response.data.photos.photo,
+            rabbit: response.data.photos.photo,
           });
-        } else if (query === "jungle") {
+        } else if (query === "koala") {
           this.setState({
-            jungle: response.data.photos.photo,
+            koala: response.data.photos.photo,
           });
         } else {
           this.setState({
-            photo: response.data.photos.photo,
+            photos: response.data.photos.photo,
           });
         }
       })
@@ -58,31 +58,29 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="container">
-          <SearchForm onSearch={this.performSearch} />
-          <Nav />
-          <div className="photo-container">
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => <PhotoContainer data={this.state.photos} />}
-              />
-              <Route
-                path="/outerspace"
-                render={() => <PhotoContainer data={this.state.outerspace} />}
-              />
-              <Route
-                path="/ocean"
-                render={() => <PhotoContainer data={this.state.ocean} />}
-              />
-              <Route
-                path="/jungle"
-                render={() => <PhotoContainer data={this.state.jungle} />}
-              />
-              <Route component={NotFound} />
-            </Switch>
-          </div>
+        <SearchForm onSearch={this.performSearch} />
+        <Nav />
+        <div className="photo-container">
+          <Switch>
+            <Route
+            exact
+              path="/"
+              render={() => <PhotoContainer data={this.state.photos} />}
+            />
+            <Route
+              path="/dog"
+              render={() => <PhotoContainer data={this.state.dog} />}
+            />
+            <Route
+              path="/rabbit"
+              render={() => <PhotoContainer data={this.state.rabbit} />}
+            />
+            <Route
+              path="/koala"
+              render={() => <PhotoContainer data={this.state.koala} />}
+            />
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </BrowserRouter>
     );
