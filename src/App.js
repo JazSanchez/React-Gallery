@@ -4,7 +4,7 @@ import axios from "axios";
 import Nav from "./components/Nav";
 import SearchForm from "./components/SearchForm";
 import NotFound from "./components/NotFound";
-import apiKey from "./components/config";
+import apiKey from "./config";
 import PhotoContainer from "./components/PhotoContainer";
 
 export default class App extends Component {
