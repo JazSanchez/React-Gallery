@@ -1,24 +1,32 @@
+//Imported Dependencies
 import React, { Component } from 'react';
-export default class SearchForm extends Component {
+import { withRouter} from 'react-router-dom';
 
+//Created a search component
+class SearchForm extends Component {
+
+  //Set the state searchText to empty
  state = {
      searchText: ''
  }
+
+ // Created an event listener that listens to what users input 
  onSearchChange = e => {
    this.setState({ searchText: e.target.value });
 
  }
-
+//An eventhandler that listens for what was input in
  handleSubmit = e => {
      e.preventDefault();
      this.props.onSearch(this.query.value);
-    
+     this.props.history.push(`/search/${this.query.value}`)
      e.currentTarget.reset();
   
 
      
  }
 
+ // render and return the given information 
  render() {
   return (
     <form className="search-form" onSubmit={this.handleSubmit}>
@@ -52,3 +60,4 @@ export default class SearchForm extends Component {
 
 
 }
+export default withRouter(SearchForm);

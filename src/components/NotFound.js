@@ -1,5 +1,6 @@
 import React from 'react';
 
+//Create a function that renders a message if what was in the input doesn't exist
 const NoPhotos = props => (
     <div className='main-content not-found'>
  <li className='no-gifs'>

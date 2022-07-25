@@ -1,13 +1,18 @@
+
+// Import required dependencies
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch} from "react-router-dom";
 import axios from "axios";
+//import App Components
 import Nav from "./components/Nav";
 import SearchForm from "./components/SearchForm";
 import NotFound from "./components/NotFound";
 import apiKey from "./config";
 import PhotoContainer from "./components/PhotoContainer";
 
+
 export default class App extends Component {
+  // Create a constructor and it's initial state value
   constructor() {
     super();
     this.state = {
@@ -18,6 +23,7 @@ export default class App extends Component {
     };
   }
 
+  // Call component did mount and pass it in the performSearch function
   componentDidMount() {
     this.performSearch();
     this.performSearch("dog");
@@ -25,6 +31,9 @@ export default class App extends Component {
     this.performSearch("koala");
   }
 
+
+//Create a function that takes in a parameter named query and updates the given state when called
+// Fetch data using axios 
   performSearch = (query = "cat") => {
     axios
       .get(
@@ -55,6 +64,8 @@ export default class App extends Component {
       });
   };
 
+  // Render and return the information to be displayed.
+  //Use Routes to direct and redirect users to appropriate pages
   render() {
     return (
       <BrowserRouter>
@@ -79,7 +90,7 @@ export default class App extends Component {
               path="/koala"
               render={() => <PhotoContainer data={this.state.koala} />}
             />
-            <Route exact path="/search/query" 
+            <Route exact path="/search/:query" 
             render={ ()=> <PhotoContainer data={this.state.photos}/>}/>
             <Route component={NotFound} />
           </Switch>
