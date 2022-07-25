@@ -4,12 +4,6 @@ import {  NavLink } from 'react-router-dom';
 
 class Nav extends Component {
 
-   // constructor() {
-   //    super()
-   //    this.state={
-   //       onClick:''
-   //    }
-   // }
 
    
 

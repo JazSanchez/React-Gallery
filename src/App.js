@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import Nav from "./components/Nav";
 import SearchForm from "./components/SearchForm";
@@ -79,6 +79,8 @@ export default class App extends Component {
               path="/koala"
               render={() => <PhotoContainer data={this.state.koala} />}
             />
+            <Route exact path="/search/query" 
+            render={ ()=> <PhotoContainer data={this.state.photos}/>}/>
             <Route component={NotFound} />
           </Switch>
         </div>
